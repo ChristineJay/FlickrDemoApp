@@ -16,6 +16,8 @@
 		CB4CE2282075A9C100C599A8 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CE2272075A9C100C599A8 /* Search.swift */; };
 		CB90FA1A2078382800D69FF3 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA192078382800D69FF3 /* DataModel.swift */; };
 		CB90FA1C20783AF800D69FF3 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */; };
+		CB90FA1E2078647900D69FF3 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA1D2078647900D69FF3 /* PopupViewController.swift */; };
+		CB90FA202078723D00D69FF3 /* love-your-future.png in Resources */ = {isa = PBXBuildFile; fileRef = CB90FA1F2078723C00D69FF3 /* love-your-future.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		CB4CE2272075A9C100C599A8 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CB90FA192078382800D69FF3 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		CB90FA1D2078647900D69FF3 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		CB90FA1F2078723C00D69FF3 /* love-your-future.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "love-your-future.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,15 +87,17 @@
 		CB4CE2032074404D00C599A8 /* Flickr Is Fun */ = {
 			isa = PBXGroup;
 			children = (
-				CB4CE2042074404D00C599A8 /* AppDelegate.swift */,
-				CB4CE20B2074404D00C599A8 /* Assets.xcassets */,
-				CB90FA192078382800D69FF3 /* DataModel.swift */,
+				CB90FA1F2078723C00D69FF3 /* love-your-future.png */,
 				CB4CE2242075A5FD00C599A8 /* FlickrApi */,
+				CB4CE20B2074404D00C599A8 /* Assets.xcassets */,
+				CB4CE2042074404D00C599A8 /* AppDelegate.swift */,
+				CB90FA192078382800D69FF3 /* DataModel.swift */,
 				CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */,
 				CB4CE2102074404D00C599A8 /* Info.plist */,
 				CB4CE20D2074404D00C599A8 /* LaunchScreen.storyboard */,
 				CB4CE2082074404D00C599A8 /* Main.storyboard */,
 				CB4CE2062074404D00C599A8 /* MainViewController.swift */,
+				CB90FA1D2078647900D69FF3 /* PopupViewController.swift */,
 			);
 			path = "Flickr Is Fun";
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB90FA202078723D00D69FF3 /* love-your-future.png in Resources */,
 				CB4CE20F2074404D00C599A8 /* LaunchScreen.storyboard in Resources */,
 				CB4CE20C2074404D00C599A8 /* Assets.xcassets in Resources */,
 				CB4CE20A2074404D00C599A8 /* Main.storyboard in Resources */,
@@ -221,6 +228,7 @@
 				CB4CE2282075A9C100C599A8 /* Search.swift in Sources */,
 				CB4CE2072074404D00C599A8 /* MainViewController.swift in Sources */,
 				CB4CE2052074404D00C599A8 /* AppDelegate.swift in Sources */,
+				CB90FA1E2078647900D69FF3 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,10 @@
 		CB90FA1C20783AF800D69FF3 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */; };
 		CB90FA1E2078647900D69FF3 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA1D2078647900D69FF3 /* PopupViewController.swift */; };
 		CB90FA202078723D00D69FF3 /* love-your-future.png in Resources */ = {isa = PBXBuildFile; fileRef = CB90FA1F2078723C00D69FF3 /* love-your-future.png */; };
+		CB90FA22207917FF00D69FF3 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB90FA21207917FF00D69FF3 /* app_icon.png */; };
+		CB90FA2420791BE400D69FF3 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA2320791BE400D69FF3 /* ApiService.swift */; };
+		CB90FA26207922FF00D69FF3 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA25207922FF00D69FF3 /* FilterViewController.swift */; };
+		CB90FA29207932B300D69FF3 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA28207932B300D69FF3 /* ImageUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,10 @@
 		CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB90FA1D2078647900D69FF3 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		CB90FA1F2078723C00D69FF3 /* love-your-future.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "love-your-future.png"; sourceTree = "<group>"; };
+		CB90FA21207917FF00D69FF3 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
+		CB90FA2320791BE400D69FF3 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		CB90FA25207922FF00D69FF3 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		CB90FA28207932B300D69FF3 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,8 @@
 		CB4CE2032074404D00C599A8 /* Flickr Is Fun */ = {
 			isa = PBXGroup;
 			children = (
+				CB90FA272079327C00D69FF3 /* Utilities */,
+				CB90FA21207917FF00D69FF3 /* app_icon.png */,
 				CB90FA1F2078723C00D69FF3 /* love-your-future.png */,
 				CB4CE2242075A5FD00C599A8 /* FlickrApi */,
 				CB4CE20B2074404D00C599A8 /* Assets.xcassets */,
@@ -98,6 +108,8 @@
 				CB4CE2082074404D00C599A8 /* Main.storyboard */,
 				CB4CE2062074404D00C599A8 /* MainViewController.swift */,
 				CB90FA1D2078647900D69FF3 /* PopupViewController.swift */,
+				CB90FA2320791BE400D69FF3 /* ApiService.swift */,
+				CB90FA25207922FF00D69FF3 /* FilterViewController.swift */,
 			);
 			path = "Flickr Is Fun";
 			sourceTree = "<group>";
@@ -117,6 +129,14 @@
 				CB4CE2272075A9C100C599A8 /* ApiObjects.swift */,
 			);
 			path = FlickrApi;
+			sourceTree = "<group>";
+		};
+		CB90FA272079327C00D69FF3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CB90FA28207932B300D69FF3 /* ImageUtils.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +225,7 @@
 				CB90FA202078723D00D69FF3 /* love-your-future.png in Resources */,
 				CB4CE20F2074404D00C599A8 /* LaunchScreen.storyboard in Resources */,
 				CB4CE20C2074404D00C599A8 /* Assets.xcassets in Resources */,
+				CB90FA22207917FF00D69FF3 /* app_icon.png in Resources */,
 				CB4CE20A2074404D00C599A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,9 +246,12 @@
 			files = (
 				CB90FA1C20783AF800D69FF3 /* ImageCollectionViewCell.swift in Sources */,
 				CB90FA1A2078382800D69FF3 /* DataModel.swift in Sources */,
+				CB90FA29207932B300D69FF3 /* ImageUtils.swift in Sources */,
+				CB90FA26207922FF00D69FF3 /* FilterViewController.swift in Sources */,
 				CB4CE2282075A9C100C599A8 /* ApiObjects.swift in Sources */,
 				CB4CE2072074404D00C599A8 /* MainViewController.swift in Sources */,
 				CB4CE2052074404D00C599A8 /* AppDelegate.swift in Sources */,
+				CB90FA2420791BE400D69FF3 /* ApiService.swift in Sources */,
 				CB90FA1E2078647900D69FF3 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

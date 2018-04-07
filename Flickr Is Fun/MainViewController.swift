@@ -18,14 +18,14 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.photoCollection.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "FlickrCell")
-        
         // todo
     }
 
     // Mark: actions
     @IBAction func search() -> Void {
 
+        // todo: this fires twice; fix it
+        // todo: clean up
         let searchText : String = searchField.text!
 
         let urlComponents : URLComponents = URLComponents(string: "https://api.flickr.com/services/rest")!
@@ -41,8 +41,8 @@ class MainViewController: UIViewController {
             guard let data = data else { return }
 
             let gitData = try? JSONDecoder().decode(Search.self, from: data)
-            print(gitData ?? "Nothing here")
-            //self.processSearchResponse(data: (gitData?.photos)!)
+            // todo: error handling
+
             DispatchQueue.main.async { [unowned self] in
                 self.processSearchResponse(data: (gitData?.photos)!)
             }
@@ -72,7 +72,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrCell", for: indexPath)
+        let cell : ImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrCell", for: indexPath) as! ImageCollectionViewCell
+        cell.setup(model.images![indexPath.row])
+        return cell
     }
-    
 }

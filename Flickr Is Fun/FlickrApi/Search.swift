@@ -16,6 +16,7 @@ struct Photo: Codable {
     let owner : String
     let secret : String
     let farm : Int
+    let server : String
     let title : String
     let ispublic : Int
     let isfriend : Int
@@ -26,10 +27,29 @@ struct Photo: Codable {
         case owner
         case secret
         case farm
+        case server
         case title
         case ispublic
         case isfriend
         case isfamily
+    }
+    
+    // Mark - images
+    
+    func GetThumbnailImageUrl() -> URL
+    {
+        return URL.init(string: GetUrlForSize(true))!
+    }
+    
+    func GetFullsizedImageUrl() -> URL
+    {
+        return URL.init(string: GetUrlForSize(false))!
+    }
+    
+    // https://www.flickr.com/services/api/misc.urls.html
+    private func GetUrlForSize( _ thumbnail : Bool) -> String {
+        let filesize_id : String = (thumbnail ? "m" : "z")
+        return "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_\(filesize_id).jpg"
     }
 }
 

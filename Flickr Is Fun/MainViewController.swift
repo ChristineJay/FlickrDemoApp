@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     }
 
     // Mark: actions
-    @IBAction func search() -> Void {
+    func search() -> Void {
 
         // todo: this fires twice; fix it
         // todo: clean up
@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
                                           URLQueryItem(name: "api_key", value: "83c35e70e57c347f68243a88985f6c95"),
                                           URLQueryItem(name: "format", value: "json"),
                                           URLQueryItem(name: "nojsoncallback", value: "1"),
+                                          URLQueryItem(name: "safe_search", value: "1"), // enable safe search
                                           URLQueryItem(name: "tags", value: searchText)]
         let searchURL = searchURLComponents.url!
         
@@ -57,10 +58,24 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController : UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        search()
+        return true
+    }
+}
+
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // show popup
+
+        let vc : PopupViewController = (UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "PopupViewController") as? PopupViewController)!
+        vc.photoData = model.images![indexPath.row]
+        vc.modalPresentationStyle = .custom
+        self.present(vc, animated: true, completion: nil)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

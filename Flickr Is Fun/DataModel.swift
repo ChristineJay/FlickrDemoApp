@@ -16,6 +16,6 @@ class DataModel: NSObject {
         if let images = self.images {
             return images.count
         }
-        return 0;
+        return 0
     }
 }

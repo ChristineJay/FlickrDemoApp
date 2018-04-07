@@ -53,8 +53,10 @@ struct Photo: Codable {
     }
 }
 
-struct Photos: Codable
-{
+struct Photos: Codable {
+
+    //photos":{"page":1,"pages":2024,"perpage":100,"total":"202377","photo"
+    
     let page : Int
     let pages : Int
     let perpage : Int
@@ -70,6 +72,8 @@ struct Photos: Codable
 
 struct Search: Codable {
 
+    // {"photos": ..., , "stat":"ok"}
+    
     let photos: Photos
     let stat : String
 
@@ -78,5 +82,3 @@ struct Search: Codable {
         case stat
     }
 }
-    //photos":{"page":1,"pages":2024,"perpage":100,"total":"202377","photo"
-

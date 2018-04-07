@@ -21,7 +21,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         photoData = photo
         
         let downloadTask = URLSession.shared.dataTask(with: photo.GetThumbnailImageUrl()) {(data, response, error) in
-            if (error == nil) {
+            if error == nil {
                 OperationQueue.main.addOperation({ () -> Void in
                     self.imageView.image = UIImage(data: data!)
                 })

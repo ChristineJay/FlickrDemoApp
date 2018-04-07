@@ -22,11 +22,9 @@ class MainViewController: UIViewController {
     }
 
     // Mark: actions
-    func search() -> Void {
+    func didEnterSearchParameters(searchText : String) -> Void {
 
-        // todo: this fires twice; fix it
         // todo: clean up
-        let searchText : String = searchField.text!
 
         let urlComponents : URLComponents = URLComponents(string: "https://api.flickr.com/services/rest")!
         var searchURLComponents = urlComponents
@@ -35,7 +33,7 @@ class MainViewController: UIViewController {
                                           URLQueryItem(name: "format", value: "json"),
                                           URLQueryItem(name: "nojsoncallback", value: "1"),
                                           URLQueryItem(name: "safe_search", value: "1"), // enable safe search
-                                          URLQueryItem(name: "tags", value: searchText)]
+                                          URLQueryItem(name: "text", value: searchText)]
         let searchURL = searchURLComponents.url!
         
         URLSession.shared.dataTask(with: searchURL) { (data, response, error) in
@@ -61,7 +59,12 @@ class MainViewController: UIViewController {
 extension MainViewController : UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        search()
+        if let searchText = searchField.text {
+            
+            didEnterSearchParameters(searchText: searchText)
+        }
+        
+        textField.resignFirstResponder()
         return true
     }
 }

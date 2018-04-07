@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol PopupViewControllerDelegate {
+    func canGoBack(index : Int) -> Bool
+    func canGoForward(index : Int) -> Bool
+    func getPrevPhoto(index : Int) -> Photo
+    func getNextPhoto(index : Int) -> Photo
+}
+
 class PopupViewController: UIViewController {
 
     @IBOutlet var imageView : UIImageView!
@@ -16,12 +23,22 @@ class PopupViewController: UIViewController {
     @IBOutlet var closeButton : UIButton!
     
     var photoData : Photo?
+    var photoIndex : Int = 0
+    
+    var delegate : PopupViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapScreen)))
-        // Do any additional setup after loading the view.
+        reloadView()
+    }
+    
+    public func setup(_ photo : Photo, photoIndex : Int, delegate : PopupViewControllerDelegate) {
+        self.photoData = photo
+        self.photoIndex = photoIndex
+        self.delegate = delegate
+    }
+    
+    func reloadView() {
         setupMetadata()
         
         let downloadTask = URLSession.shared.dataTask(with: photoData!.GetFullsizedImageUrl()) {(data, response, error) in
@@ -35,8 +52,13 @@ class PopupViewController: UIViewController {
         downloadTask.resume()
     }
     
-    @IBAction func didSelectClosePopup()
-    {
+    @IBAction func didTapScreen() {
+        // toggle show/hide close button
+        self.closeButton.isHidden = !self.closeButton.isHidden
+        self.toggleMetadataHidden(hidden: self.closeButton.isHidden)
+    }
+    
+    @IBAction func didSelectClosePopup() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -62,43 +84,45 @@ class PopupViewController: UIViewController {
         lastPoint = gestureRecognizer.location(in: self.imageView)
     }
     
-    @IBAction func swipeToClose(_ gestureRecognizer : UISwipeGestureRecognizer) {
+    @IBAction func didSwipeUpOrDown(_ gestureRecognizer : UISwipeGestureRecognizer) {
         
         guard gestureRecognizer.view != nil else { return }
         
-        switch gestureRecognizer.direction {
-        case .right:
-            // todo: forwards
-            break;
-        case .left:
-            // todo: backwards
-            break;
-        default:
-            // up or down to close
-            self.didSelectClosePopup()
-            break;
-        }
+        // up or down to close
+        self.didSelectClosePopup()
     }
     
-    func setupMetadata() -> Void {
+    func setupMetadata() {
         self.imageTitle.text = photoData?.title
         self.imagePhotographer.text = "photo by \(photoData?.owner ?? "unavailable")"
         
         // todo: include metadata of actual image
     }
     
-    func toggleMetadataHidden(hidden : Bool) -> Void {
+    func toggleMetadataHidden(hidden : Bool) {
         self.imageTitle.isHidden = hidden
         self.imagePhotographer.isHidden = hidden
     }
-}
-
-extension PopupViewController : UIGestureRecognizerDelegate
-{
-    @objc func didTapScreen(sender : Any) -> Void
-    {
-        // toggle show/hide close button
-        self.closeButton.isHidden = !self.closeButton.isHidden
-        self.toggleMetadataHidden(hidden: self.closeButton.isHidden)
+    
+    @IBAction func didSwipeRight() {
+        // try and get previous image
+        if let delegate = self.delegate {
+            if delegate.canGoBack(index: photoIndex) {
+                self.photoData = delegate.getPrevPhoto(index: photoIndex)
+                self.photoIndex = photoIndex - 1
+                self.reloadView()
+            }
+        }
+    }
+    
+    @IBAction func didSwipeLeft() {
+        // try and get the next image
+        if let delegate = self.delegate {
+            if delegate.canGoForward(index: photoIndex) {
+                self.photoData = delegate.getNextPhoto(index: photoIndex)
+                self.photoIndex = photoIndex + 1
+                self.reloadView()
+            }
+        }
     }
 }

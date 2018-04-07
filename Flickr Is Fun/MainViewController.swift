@@ -27,15 +27,14 @@ class MainViewController: UIViewController {
         self.reloadView()
     }
     
-    func reloadView() -> Void {
+    func reloadView() {
         
         self.sortButton.isHidden = !self.model.hasPhotoData()
         self.photoCollection.reloadData()
     }
 
     // Mark: actions
-    @IBAction func didSelectSortBy() -> Void
-    {
+    @IBAction func didSelectSortBy() {
         let vc : FilterViewController = (UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "FilterViewController") as? FilterViewController)!
         vc.delegate = self
@@ -44,8 +43,8 @@ class MainViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    @IBAction func didSelectViewHistory() -> Void
-    {
+    @IBAction func didSelectViewHistory() {
+        
     }
     
     func makeSearchRequestAndReload(_ searchText : String) {
@@ -80,13 +79,39 @@ extension MainViewController: FilterViewControllerDelegate {
     }
 }
 
+extension MainViewController: PopupViewControllerDelegate {
+    func canGoBack(index : Int) -> Bool {
+        return ((index - 1) >= 0)
+    }
+    
+    func canGoForward(index : Int) -> Bool {
+        return ((index + 1) <= model.images.count)
+    }
+
+    func getPrevPhoto(index : Int) -> Photo {
+        var idx = index - 1
+        if idx < 0 {
+            idx = 0
+        }
+        return model.images[idx]
+    }
+    
+    func getNextPhoto(index : Int) -> Photo {
+        var idx = index + 1
+        if idx >= model.images.count {
+            idx = model.images.count - 1
+        }
+        return model.images[idx]
+    }
+}
+
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == photoSection {
             let vc : PopupViewController = (UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "PopupViewController") as? PopupViewController)!
-            vc.photoData = model.images[indexPath.row]
+            vc.setup(model.images[indexPath.row], photoIndex: indexPath.row, delegate: self)
             vc.modalPresentationStyle = .custom
             self.present(vc, animated: true, completion: nil)
          } else {

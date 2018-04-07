@@ -38,7 +38,6 @@ public class DataModel: NSObject {
     }
     
     func updateFilterOption(_ option : FilterOption) {
-        
         self.filterOption = option
         self.sortBy(option)
     }

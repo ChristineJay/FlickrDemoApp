@@ -196,6 +196,7 @@
                                     <outletCollection property="gestureRecognizers" destination="pEB-8U-Cl2" appends="YES" id="EOF-jD-Cay"/>
                                     <outletCollection property="gestureRecognizers" destination="uFU-0K-V1c" appends="YES" id="vD0-vo-OFb"/>
                                     <outletCollection property="gestureRecognizers" destination="ZaF-eR-cHN" appends="YES" id="bfe-WL-qQd"/>
+                                    <outletCollection property="gestureRecognizers" destination="Ef0-Vp-xxO" appends="YES" id="qTg-q8-Kcd"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNo-hU-wlM">
@@ -256,16 +257,29 @@
                 </pinchGestureRecognizer>
                 <swipeGestureRecognizer direction="up" id="nxr-oa-YAj">
                     <connections>
-                        <action selector="swipeToClose:" destination="NsK-Bb-BQE" id="5JF-JT-Bf0"/>
+                        <action selector="didSwipeUpOrDown:" destination="NsK-Bb-BQE" id="6X2-UJ-5vL"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="pEB-8U-Cl2"/>
-                <swipeGestureRecognizer direction="left" id="uFU-0K-V1c"/>
+                <swipeGestureRecognizer direction="right" id="pEB-8U-Cl2">
+                    <connections>
+                        <action selector="didSwipeRight" destination="NsK-Bb-BQE" id="5mC-x6-4eu"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="uFU-0K-V1c">
+                    <connections>
+                        <action selector="didSwipeLeft" destination="NsK-Bb-BQE" id="Ohy-4P-FID"/>
+                    </connections>
+                </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="down" id="ZaF-eR-cHN">
                     <connections>
-                        <action selector="swipeToClose:" destination="NsK-Bb-BQE" id="17f-ul-oCg"/>
+                        <action selector="didSwipeUpOrDown:" destination="NsK-Bb-BQE" id="rCX-GO-BCw"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="Ef0-Vp-xxO">
+                    <connections>
+                        <action selector="didTapScreen" destination="NsK-Bb-BQE" id="T9F-wH-io8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="133.5832083958021"/>
         </scene>

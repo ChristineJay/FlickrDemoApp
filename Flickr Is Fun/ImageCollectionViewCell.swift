@@ -21,8 +21,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.photoData = nil
     }
     
-    public func setup(_ photo : Photo) -> Void
-    {
+    public func setup(_ photo : Photo) {
         // todo: caching, error handling
         
         if self.photoData != nil {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LVm-Im-kwB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,16 +10,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--flickr app-->
+        <scene sceneID="YCM-jO-xLM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTa-V5-YTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController title="flickr app" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" hidesBarsWhenKeyboardAppears="YES" id="LVm-Im-kwB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="K69-p9-xEY">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eTZ-vs-BPo"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-662" y="134"/>
+        </scene>
+        <!--flickr app-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Flickr_Is_Fun" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="flickr app" id="BYZ-38-t0r" customClass="MainViewController" customModule="Flickr_Is_Fun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter search terms" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OFo-qP-r9Z">
-                                <rect key="frame" x="16" y="70" width="343" height="30"/>
+                                <rect key="frame" x="16" y="16" width="343" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Q09-eh-zZE"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
@@ -28,7 +57,7 @@
                                 </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gCb-np-xM8">
-                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="437"/>
                                 <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cJL-cf-A9g">
                                     <size key="itemSize" width="163" height="150"/>
@@ -76,7 +105,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EbM-Q3-s5V">
-                                <rect key="frame" x="309" y="116" width="50" height="33"/>
+                                <rect key="frame" x="309" y="80" width="50" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="CpY-UA-dkM"/>
                                 </constraints>
@@ -86,29 +115,22 @@
                                     <action selector="didSelectSortBy" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zka-6V-PvV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="flickr app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1S-ws-FjC">
-                                <rect key="frame" x="16" y="22.5" width="103" height="31.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EbM-Q3-s5V" firstAttribute="top" secondItem="OFo-qP-r9Z" secondAttribute="bottom" constant="16" id="1l9-I1-nXL"/>
-                            <constraint firstItem="OFo-qP-r9Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="593-vO-iyU"/>
+                            <constraint firstItem="OFo-qP-r9Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="593-vO-iyU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gCb-np-xM8" secondAttribute="trailing" id="8Ps-N5-mNu"/>
-                            <constraint firstItem="e1S-ws-FjC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ben-Wf-yAb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OFo-qP-r9Z" secondAttribute="trailing" constant="16" id="CfJ-0W-iwp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EbM-Q3-s5V" secondAttribute="trailing" constant="16" id="EiJ-Ah-47u"/>
                             <constraint firstItem="OFo-qP-r9Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KjZ-Ig-yj1"/>
-                            <constraint firstItem="OFo-qP-r9Z" firstAttribute="top" secondItem="e1S-ws-FjC" secondAttribute="bottom" constant="16" id="Q1A-Q4-1XD"/>
                             <constraint firstItem="gCb-np-xM8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U28-8C-9X5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gCb-np-xM8" secondAttribute="bottom" id="pXW-T1-tNH"/>
                             <constraint firstItem="gCb-np-xM8" firstAttribute="top" secondItem="OFo-qP-r9Z" secondAttribute="bottom" constant="50" id="zPg-HR-ihR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xly-2h-Lu1"/>
                     <connections>
                         <outlet property="photoCollection" destination="gCb-np-xM8" id="IP3-ub-dkR"/>
                         <outlet property="searchField" destination="OFo-qP-r9Z" id="wxH-aV-nLH"/>
@@ -122,7 +144,6 @@
         <!--Popup View Controller-->
         <scene sceneID="YHD-jl-pdy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pPd-M0-wv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PopupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NsK-Bb-BQE" customClass="PopupViewController" customModule="Flickr_Is_Fun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Loh-u1-f8Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -189,6 +210,7 @@
                         <outlet property="imageView" destination="pBE-r2-F3G" id="ICG-jn-TR4"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pPd-M0-wv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pinchGestureRecognizer id="mr4-ac-S7W">
                     <connections>
                         <action selector="scalePiece:" destination="NsK-Bb-BQE" id="zNJ-Gc-3x1"/>

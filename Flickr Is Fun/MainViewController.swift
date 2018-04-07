@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = "flickr app"
         // todo
     }
 

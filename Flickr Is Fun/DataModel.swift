@@ -11,9 +11,19 @@ import UIKit
 public class DataModel: NSObject {
     var images : [Photo] = []
     var filterOption : FilterOption = .none
+
+    var tags : [String] = [ "test", "hello", "slalom" ]
     
-    func numberOfCells() -> Int {
+    func numberOfPhotosToDisplay() -> Int {
         return min(images.count, 20)
+    }
+    
+    func hasPhotoData() -> Bool {
+        return images.count > 0
+    }
+    
+    func hasTagData() -> Bool {
+        return tags.count > 0
     }
     
     func getFilterDescriptionText() -> String {
@@ -37,13 +47,13 @@ public class DataModel: NSObject {
         switch option {
         case .none:
             self.images.sort(by: { $0.id < $1.id } )
-            break;
+            break
         case .alphabeticalByOwner:
             self.images.sort(by: { $0.owner < $1.owner } )
-            break;
+            break
         case .alphabeticalByTitle:
             self.images.sort(by: { $0.title < $1.title } )
-            break;
+            break
         }
     }
 }

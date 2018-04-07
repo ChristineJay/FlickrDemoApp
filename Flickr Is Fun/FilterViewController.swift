@@ -53,16 +53,15 @@ extension FilterViewController : UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case FilterOption.none.rawValue:
             cell.textLabel?.text = "Clear Filter"
-
-            break;
+            break
         case FilterOption.alphabeticalByTitle.rawValue:
             cell.textLabel?.text = "Alphabetical by Title"
-            break;
+            break
         case FilterOption.alphabeticalByOwner.rawValue:
             cell.textLabel?.text = "Alphabetical by Owner"
-            break;
+            break
         default:
-            break;
+            break
         }
         
         return cell

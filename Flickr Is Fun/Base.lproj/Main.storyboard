@@ -14,7 +14,7 @@
         <scene sceneID="YCM-jO-xLM">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTa-V5-YTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController title="flickr app" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" hidesBarsWhenKeyboardAppears="YES" id="LVm-Im-kwB" sceneMemberID="viewController">
+                <navigationController title="flickr app" hidesBarsOnSwipe="YES" hidesBarsWhenKeyboardAppears="YES" id="LVm-Im-kwB" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="K69-p9-xEY">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -56,7 +56,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="NXQ-J1-TsT"/>
                                 </connections>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gCb-np-xM8">
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gCb-np-xM8">
                                 <rect key="frame" x="0.0" y="114" width="375" height="437"/>
                                 <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cJL-cf-A9g">
@@ -67,7 +67,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="g6r-xg-N4j" customClass="ImageCollectionViewCell" customModule="Flickr_Is_Fun" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="0.0" width="163" height="150"/>
+                                        <rect key="frame" x="106" y="0.0" width="163" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="163" height="150"/>
@@ -98,14 +98,38 @@
                                             <outlet property="imageView" destination="kPv-Aa-rLG" id="dFk-51-vXe"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCollectionViewCell" id="NrU-ld-t5r" customClass="TagCollectionViewCell" customModule="Flickr_Is_Fun" customModuleProvider="target">
+                                        <rect key="frame" x="27.5" y="160" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNJ-IJ-NPR">
+                                                    <rect key="frame" x="16" y="14.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="zNJ-IJ-NPR" firstAttribute="centerY" secondItem="NrU-ld-t5r" secondAttribute="centerY" id="8XJ-pt-K2e"/>
+                                            <constraint firstItem="zNJ-IJ-NPR" firstAttribute="leading" secondItem="NrU-ld-t5r" secondAttribute="leading" constant="16" id="UZo-1s-8dc"/>
+                                        </constraints>
+                                        <size key="customSize" width="320" height="50"/>
+                                        <connections>
+                                            <outlet property="titleView" destination="zNJ-IJ-NPR" id="RAw-lS-uAu"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="fIW-EZ-JpM"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="0mx-46-10A"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EbM-Q3-s5V">
-                                <rect key="frame" x="309" y="80" width="50" height="33"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EbM-Q3-s5V">
+                                <rect key="frame" x="243" y="80" width="50" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="CpY-UA-dkM"/>
                                 </constraints>
@@ -115,6 +139,17 @@
                                     <action selector="didSelectSortBy" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zka-6V-PvV"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nT-tQ-MC2">
+                                <rect key="frame" x="309" y="80" width="50" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="1mF-aH-dku"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="clear"/>
+                                <connections>
+                                    <action selector="didSelectSortBy" destination="BYZ-38-t0r" eventType="touchUpInside" id="pe3-sQ-m39"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -122,10 +157,13 @@
                             <constraint firstItem="OFo-qP-r9Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="593-vO-iyU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gCb-np-xM8" secondAttribute="trailing" id="8Ps-N5-mNu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OFo-qP-r9Z" secondAttribute="trailing" constant="16" id="CfJ-0W-iwp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EbM-Q3-s5V" secondAttribute="trailing" constant="16" id="EiJ-Ah-47u"/>
                             <constraint firstItem="OFo-qP-r9Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KjZ-Ig-yj1"/>
                             <constraint firstItem="gCb-np-xM8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U28-8C-9X5"/>
+                            <constraint firstItem="3nT-tQ-MC2" firstAttribute="leading" secondItem="EbM-Q3-s5V" secondAttribute="trailing" constant="16" id="akn-Ko-Yth"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gCb-np-xM8" secondAttribute="bottom" id="pXW-T1-tNH"/>
+                            <constraint firstItem="3nT-tQ-MC2" firstAttribute="centerY" secondItem="EbM-Q3-s5V" secondAttribute="centerY" id="trq-E7-Ohx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3nT-tQ-MC2" secondAttribute="trailing" constant="16" id="vnC-l6-cvb"/>
+                            <constraint firstItem="EbM-Q3-s5V" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="yfl-a7-uYN"/>
                             <constraint firstItem="gCb-np-xM8" firstAttribute="top" secondItem="OFo-qP-r9Z" secondAttribute="bottom" constant="50" id="zPg-HR-ihR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

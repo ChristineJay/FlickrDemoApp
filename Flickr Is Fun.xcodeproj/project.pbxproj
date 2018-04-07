@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB3BCCAD2079559100349254 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BCCAC2079559100349254 /* TagCollectionViewCell.swift */; };
 		CB4CE2052074404D00C599A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CE2042074404D00C599A8 /* AppDelegate.swift */; };
 		CB4CE2072074404D00C599A8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CE2062074404D00C599A8 /* MainViewController.swift */; };
 		CB4CE20A2074404D00C599A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB4CE2082074404D00C599A8 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB3BCCAC2079559100349254 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB4CE2012074404D00C599A8 /* Flickr Is Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flickr Is Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4CE2042074404D00C599A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB4CE2062074404D00C599A8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				CB90FA1D2078647900D69FF3 /* PopupViewController.swift */,
 				CB90FA2320791BE400D69FF3 /* ApiService.swift */,
 				CB90FA25207922FF00D69FF3 /* FilterViewController.swift */,
+				CB3BCCAC2079559100349254 /* TagCollectionViewCell.swift */,
 			);
 			path = "Flickr Is Fun";
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				CB4CE2282075A9C100C599A8 /* ApiObjects.swift in Sources */,
 				CB4CE2072074404D00C599A8 /* MainViewController.swift in Sources */,
 				CB4CE2052074404D00C599A8 /* AppDelegate.swift in Sources */,
+				CB3BCCAD2079559100349254 /* TagCollectionViewCell.swift in Sources */,
 				CB90FA2420791BE400D69FF3 /* ApiService.swift in Sources */,
 				CB90FA1E2078647900D69FF3 /* PopupViewController.swift in Sources */,
 			);

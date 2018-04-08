@@ -25,11 +25,11 @@ public class DataModel: NSObject {
     func getFilterDescriptionText() -> String {
         switch filterOption {
         case .none:
-            return "sort"
+            return ""
         case .alphabeticalByOwner:
-            return "sorted (by owner)"
+            return "sorted by owner"
         case .alphabeticalByTitle:
-            return "sorted (by title)"
+            return "sorted by title"
         }
     }
     

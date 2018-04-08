@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     private let photoSection : Int = 0
     private let tagSection : Int = 1
     
+    @IBOutlet var logoImage : UIImageView!
     @IBOutlet var searchField : UITextField!
     @IBOutlet var sortButton : UIButton!
     @IBOutlet var sortDescriptionLabel : UILabel!
@@ -28,6 +29,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "flickr app"
+        
+        self.logoImage.isHidden = self.traitCollection.horizontalSizeClass == .compact
         
         if !model.hasPhotoData() && !model.hasTagData() {
             ApiService.getSuggestedTopics({ (result: [Tag], error: Error?) in

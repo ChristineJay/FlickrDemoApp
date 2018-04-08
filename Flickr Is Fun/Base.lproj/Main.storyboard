@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LVm-Im-kwB">
-    <device id="ipad9_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,7 +17,7 @@
             <objects>
                 <navigationController title="flickr app" hidesBarsOnSwipe="YES" hidesBarsWhenKeyboardAppears="YES" id="LVm-Im-kwB" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="K69-p9-xEY">
-                        <rect key="frame" x="0.0" y="20" width="768" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -38,12 +38,12 @@
             </objects>
             <point key="canvasLocation" x="-662" y="134"/>
         </scene>
-        <!--flickr app-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="flickr app" id="BYZ-38-t0r" customClass="MainViewController" customModule="Flickr_Is_Fun" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Flickr_Is_Fun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="908"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter search terms" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OFo-qP-r9Z">
@@ -70,7 +70,7 @@
                                 </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gCb-np-xM8">
-                                <rect key="frame" x="0.0" y="80" width="768" height="828"/>
+                                <rect key="frame" x="0.0" y="80" width="320" height="284"/>
                                 <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cJL-cf-A9g">
                                     <size key="itemSize" width="163" height="150"/>
@@ -80,7 +80,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="g6r-xg-N4j" customClass="ImageCollectionViewCell" customModule="Flickr_Is_Fun" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="0.0" width="163" height="150"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="163" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="163" height="150"/>
@@ -119,7 +119,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCollectionViewCell" id="NrU-ld-t5r" customClass="TagCollectionViewCell" customModule="Flickr_Is_Fun" customModuleProvider="target">
-                                        <rect key="frame" x="189" y="50" width="320" height="50"/>
+                                        <rect key="frame" x="16" y="160" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -213,14 +213,22 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHG-gW-TZS">
-                                <rect key="frame" x="760" y="59" width="0.0" height="0.0"/>
+                                <rect key="frame" x="312" y="59" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flickr" translatesAutoresizingMaskIntoConstraints="NO" id="tLw-F7-eUg">
+                                <rect key="frame" x="12" y="0.0" width="240" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GGF-jD-qqG"/>
+                                    <constraint firstAttribute="width" constant="240" id="QRp-dY-bjN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tLw-F7-eUg" secondAttribute="trailing" constant="68" id="3AK-L6-GBb"/>
                             <constraint firstItem="OFo-qP-r9Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="593-vO-iyU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gCb-np-xM8" secondAttribute="trailingMargin" constant="8" id="8Ps-N5-mNu"/>
                             <constraint firstAttribute="trailing" secondItem="OFo-qP-r9Z" secondAttribute="trailing" priority="250" constant="16" id="Ims-B9-1ir"/>
@@ -234,6 +242,7 @@
                             <constraint firstItem="EbM-Q3-s5V" firstAttribute="leading" secondItem="bjA-vn-WE1" secondAttribute="trailing" constant="8" id="oNm-X8-VRE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cHG-gW-TZS" secondAttribute="trailing" constant="8" id="p2O-lZ-CgU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gCb-np-xM8" secondAttribute="bottom" id="pXW-T1-tNH"/>
+                            <constraint firstItem="tLw-F7-eUg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="x2e-El-DUi"/>
                             <constraint firstItem="cHG-gW-TZS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="yV1-Tq-Ikn"/>
                             <constraint firstItem="gCb-np-xM8" firstAttribute="top" secondItem="OFo-qP-r9Z" secondAttribute="bottom" constant="24" id="zPg-HR-ihR"/>
                         </constraints>
@@ -242,6 +251,7 @@
                     <navigationItem key="navigationItem" id="xly-2h-Lu1"/>
                     <connections>
                         <outlet property="clearPhotosButton" destination="bjA-vn-WE1" id="7La-QS-jQv"/>
+                        <outlet property="logoImage" destination="tLw-F7-eUg" id="nhH-k0-JXF"/>
                         <outlet property="photoCollection" destination="gCb-np-xM8" id="IP3-ub-dkR"/>
                         <outlet property="searchField" destination="OFo-qP-r9Z" id="wxH-aV-nLH"/>
                         <outlet property="searchFieldToButtons" destination="Tg4-u7-vxC" id="YQ4-3R-kKW"/>
@@ -259,11 +269,11 @@
             <objects>
                 <viewController storyboardIdentifier="PopupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NsK-Bb-BQE" customClass="PopupViewController" customModule="Flickr_Is_Fun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Loh-u1-f8Q">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pBE-r2-F3G">
-                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="mr4-ac-S7W" appends="YES" id="ZnU-an-XpD"/>
@@ -275,7 +285,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNo-hU-wlM">
-                                <rect key="frame" x="695" y="20" width="73" height="50"/>
+                                <rect key="frame" x="247" y="20" width="73" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="WJL-7Z-q6O"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="hta-oY-wo3"/>
@@ -288,13 +298,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgo-xE-T5C">
-                                <rect key="frame" x="362.5" y="36" width="43.5" height="21"/>
+                                <rect key="frame" x="138.5" y="36" width="43.5" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1R-IA-L71">
-                                <rect key="frame" x="368.5" y="65" width="31" height="14.5"/>
+                                <rect key="frame" x="144.5" y="65" width="31" height="14.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -313,7 +323,7 @@
                             <constraint firstItem="v1R-IA-L71" firstAttribute="centerX" secondItem="Loh-u1-f8Q" secondAttribute="centerX" id="iKo-4m-shB"/>
                             <constraint firstItem="pBE-r2-F3G" firstAttribute="top" secondItem="dCV-ar-cDw" secondAttribute="top" id="ibg-Qd-tBV"/>
                             <constraint firstItem="dCV-ar-cDw" firstAttribute="trailing" secondItem="pBE-r2-F3G" secondAttribute="trailing" id="sRM-30-ApF"/>
-                            <constraint firstItem="kNo-hU-wlM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v1R-IA-L71" secondAttribute="trailing" constant="48" id="wWa-kT-yd2"/>
+                            <constraint firstItem="v1R-IA-L71" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Loh-u1-f8Q" secondAttribute="trailing" constant="16" id="wWa-kT-yd2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dCV-ar-cDw"/>
                     </view>
@@ -363,11 +373,11 @@
             <objects>
                 <viewController storyboardIdentifier="FilterViewController" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="foi-Rz-O5j" customClass="FilterViewController" customModule="Flickr_Is_Fun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qN0-1w-I4W">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KKw-Oa-cno">
-                                <rect key="frame" x="0.0" y="119" width="540" height="132"/>
+                                <rect key="frame" x="0.0" y="139" width="320" height="132"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="uN3-Je-4iC"/>
@@ -378,7 +388,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDu-3O-UYl">
-                                <rect key="frame" x="16" y="71.5" width="141" height="31.5"/>
+                                <rect key="frame" x="16" y="91.5" width="141" height="31.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -407,6 +417,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Flickr" width="800" height="242"/>
         <image name="Sort" width="150" height="150"/>
         <image name="Trash" width="170" height="170"/>
     </resources>

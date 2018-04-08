@@ -70,13 +70,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CB3BCCAE207A248600349254 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
 		CB4CE1F82074404D00C599A8 = {
 			isa = PBXGroup;
 			children = (
@@ -98,20 +91,19 @@
 		CB4CE2032074404D00C599A8 /* Flickr Is Fun */ = {
 			isa = PBXGroup;
 			children = (
-				CB3BCCAE207A248600349254 /* Image */,
 				CB4CE2242075A5FD00C599A8 /* FlickrApi */,
 				CB4CE20B2074404D00C599A8 /* Assets.xcassets */,
+				CB90FA2320791BE400D69FF3 /* ApiService.swift */,
 				CB4CE2042074404D00C599A8 /* AppDelegate.swift */,
 				CB90FA192078382800D69FF3 /* DataModel.swift */,
+				CB90FA25207922FF00D69FF3 /* FilterViewController.swift */,
 				CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */,
-				CB4CE2102074404D00C599A8 /* Info.plist */,
 				CB4CE20D2074404D00C599A8 /* LaunchScreen.storyboard */,
 				CB4CE2082074404D00C599A8 /* Main.storyboard */,
 				CB4CE2062074404D00C599A8 /* MainViewController.swift */,
 				CB90FA1D2078647900D69FF3 /* PopupViewController.swift */,
-				CB90FA2320791BE400D69FF3 /* ApiService.swift */,
-				CB90FA25207922FF00D69FF3 /* FilterViewController.swift */,
 				CB3BCCAC2079559100349254 /* TagCollectionViewCell.swift */,
+				CB4CE2102074404D00C599A8 /* Info.plist */,
 			);
 			path = "Flickr Is Fun";
 			sourceTree = "<group>";

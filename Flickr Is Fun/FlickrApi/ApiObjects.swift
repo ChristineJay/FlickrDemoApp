@@ -82,3 +82,33 @@ struct Search: Codable {
         case stat
     }
 }
+
+struct Tag : Codable {
+    
+    // {"score":"100","_content":"feb23"}
+    
+    let score : Int
+    let content : String
+    
+    private enum CodingKeys: String, CodingKey {
+        case score
+        case content = "_content"
+    }
+}
+
+struct TrendingTags: Codable {
+    
+    // period":"day","count":20,"tag":[
+    
+    let period : String
+    let count : Int
+    let tag : [Tag]
+    let stat : String
+
+    private enum CodingKeys: String, CodingKey {
+        case period
+        case count
+        case tag
+        case stat
+    }
+}

@@ -21,8 +21,7 @@ public class ApiService: NSObject {
         return urlComponents
     }
     
-    static func search(searchTerms : String, completion: @escaping (_ result: Photos) -> Void){
-
+    static func search(searchTerms : String, completion: @escaping (_ result: Photos) -> Void) {
         var searchURLComponents = self.getBaseURLComponents(method: "flickr.photos.search")
         searchURLComponents.queryItems?.append(URLQueryItem(name: "text", value: searchTerms))
         let searchURL = searchURLComponents.url!
@@ -39,6 +38,20 @@ public class ApiService: NSObject {
             }.resume()
     }
     
+    static func getTrendingTopics(_ completion: @escaping (_ result: [Tag]) -> Void) {
+        let searchURLComponents = self.getBaseURLComponents(method: "flickr.tags.getHotList")
+        let searchURL = searchURLComponents.url!
+        
+        URLSession.shared.dataTask(with: searchURL) { (data, response, error) in
+            guard let data = data else { return }
+            
+            let gitData = try? JSONDecoder().decode(TrendingTags.self, from: data)
+            // todo: error handling
+            
+            completion((gitData?.tag)!)
+            }.resume()
+    }
+    
     private static var cache : NSCache<AnyObject,AnyObject> = NSCache()
     static func downloadOrFetchImage(_ url : URL, completion: @escaping (_ data : Data) -> Void) {
         // todo: error handling
@@ -47,6 +60,8 @@ public class ApiService: NSObject {
             completion(cache.object(forKey: url as AnyObject) as! Data)
             return
         }
+        
+        //CFHostGetReachability(<#T##theHost: CFHost##CFHost#>, <#T##hasBeenResolved: UnsafeMutablePointer<DarwinBoolean>?##UnsafeMutablePointer<DarwinBoolean>?#>)
         
         let downloadTask = URLSession.shared.dataTask(with: url) {(data, response, error) in
             if error == nil {

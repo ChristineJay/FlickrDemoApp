@@ -10,29 +10,50 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let photoSection : Int = 0
-    let tagSection : Int = 1
+    // constants
+    private let photoSection : Int = 0
+    private let tagSection : Int = 1
     
     @IBOutlet var searchField : UITextField!
     @IBOutlet var sortButton : UIButton!
-    @IBOutlet var searchHistoryButton : UIButton!
+    @IBOutlet var sortDescriptionLabel : UILabel!
+    @IBOutlet var clearPhotosButton : UIButton!
     @IBOutlet var photoCollection : UICollectionView!
+    
+    @IBOutlet var searchFieldToSuperView : NSLayoutConstraint!
+    @IBOutlet var searchFieldToButtons : NSLayoutConstraint!
     
     var model : DataModel = DataModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "flickr app"
-
+        
+        if !model.hasPhotoData() && !model.hasTagData() {
+            ApiService.getTrendingTopics({ (result: [Tag]) in
+                self.model.tags = []
+                for tag in result {
+                    self.model.tags.append(tag.content)
+                }
+                self.reloadView()
+            })
+        }
+        
         self.reloadView()
     }
     
     func reloadView() {
+        let photoMode : Bool = self.model.hasPhotoData()
+        self.sortButton.isHidden = !photoMode
+        self.sortDescriptionLabel.isHidden = !photoMode
+        self.clearPhotosButton.isHidden = !photoMode
         
-        self.sortButton.isHidden = !self.model.hasPhotoData()
+        self.searchFieldToSuperView.priority = photoMode ? .defaultLow : .defaultHigh
+        self.searchFieldToButtons.priority = photoMode ? .defaultHigh : .defaultLow
+        
         self.photoCollection.reloadData()
     }
-
+    
     // Mark: actions
     @IBAction func didSelectSortBy() {
         let vc : FilterViewController = (UIStoryboard(name: "Main", bundle: nil)
@@ -43,17 +64,33 @@ class MainViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    @IBAction func didSelectViewHistory() {
-        
+    @IBAction func didSelectClearPhotos() {
+        self.searchField.text = ""
+        self.model.images = []
+        self.reloadView()
     }
     
     func makeSearchRequestAndReload(_ searchText : String) {
+        if searchText == "" {
+            return
+        }
+        
+        self.searchField.isEnabled = false
         ApiService.search(searchTerms: searchText,
                           completion: { (result: Photos) in
-                            
                             self.model.images = result.photo
                             self.reloadView()
+                            self.searchField.isEnabled = true
         })
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        // if we rotate, we need to relayout the tags section so it is the correct size
+        if !model.hasPhotoData() {
+            photoCollection.collectionViewLayout.invalidateLayout()
+        }
     }
 }
 
@@ -61,7 +98,6 @@ extension MainViewController : UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let searchText = searchField.text {
-            
             makeSearchRequestAndReload(searchText)
         }
         
@@ -74,7 +110,7 @@ extension MainViewController: FilterViewControllerDelegate {
 
     func didSelectFilterOption(_ sortBy: FilterOption) {
         self.model.updateFilterOption(sortBy)
-        self.sortButton.setTitle(self.model.getFilterDescriptionText(), for: .normal)
+        self.sortDescriptionLabel.text = self.model.getFilterDescriptionText()
         self.photoCollection.reloadData()
     }
 }
@@ -105,8 +141,7 @@ extension MainViewController: PopupViewControllerDelegate {
     }
 }
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource
-{
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == photoSection {
             let vc : PopupViewController = (UIStoryboard(name: "Main", bundle: nil)
@@ -155,4 +190,21 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         // shouldn't happen
         return collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrCell", for: indexPath) as! ImageCollectionViewCell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        if (indexPath.section == tagSection) {
+            return CGSize.init(width: collectionView.frame.size.width, height: 50)
+        }
+        
+        return CGSize.init(width: 163, height: 150)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == tagSection {
+            return CGSize.init(width: collectionView.frame.size.width, height: 50)
+        }
+        return CGSize.zero
+    }
+    
+
 }

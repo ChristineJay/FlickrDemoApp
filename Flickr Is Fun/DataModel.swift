@@ -12,7 +12,7 @@ public class DataModel: NSObject {
     var images : [Photo] = []
     var filterOption : FilterOption = .none
 
-    var tags : [String] = [ "test", "hello", "slalom" ]
+    var tags : [String] = []//[ "test", "hello", "slalom" ]
     
     func numberOfPhotosToDisplay() -> Int {
         return min(images.count, 20)

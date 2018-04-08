@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB098D4F207A92A0001EFE1D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB098D4E207A92A0001EFE1D /* Reachability.swift */; };
 		CB3BCCAD2079559100349254 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BCCAC2079559100349254 /* TagCollectionViewCell.swift */; };
 		CB4CE2052074404D00C599A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CE2042074404D00C599A8 /* AppDelegate.swift */; };
 		CB4CE2072074404D00C599A8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CE2062074404D00C599A8 /* MainViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB098D4E207A92A0001EFE1D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		CB3BCCAC2079559100349254 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB4CE2012074404D00C599A8 /* Flickr Is Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flickr Is Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4CE2042074404D00C599A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB098D4D207A9284001EFE1D /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				CB098D4E207A92A0001EFE1D /* Reachability.swift */,
+			);
+			path = "3rd Party";
+			sourceTree = "<group>";
+		};
 		CB4CE1F82074404D00C599A8 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		CB4CE2032074404D00C599A8 /* Flickr Is Fun */ = {
 			isa = PBXGroup;
 			children = (
+				CB098D4D207A9284001EFE1D /* 3rd Party */,
 				CB4CE2242075A5FD00C599A8 /* FlickrApi */,
 				CB4CE20B2074404D00C599A8 /* Assets.xcassets */,
 				CB90FA2320791BE400D69FF3 /* ApiService.swift */,
@@ -236,6 +247,7 @@
 				CB4CE2052074404D00C599A8 /* AppDelegate.swift in Sources */,
 				CB3BCCAD2079559100349254 /* TagCollectionViewCell.swift in Sources */,
 				CB90FA2420791BE400D69FF3 /* ApiService.swift in Sources */,
+				CB098D4F207A92A0001EFE1D /* Reachability.swift in Sources */,
 				CB90FA1E2078647900D69FF3 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

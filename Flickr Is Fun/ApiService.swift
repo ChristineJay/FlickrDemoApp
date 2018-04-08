@@ -26,6 +26,14 @@ public class ApiService: NSObject {
         searchURLComponents.queryItems?.append(URLQueryItem(name: "text", value: searchTerms))
         let searchURL = searchURLComponents.url!
         
+        let reachable = Reachability.init(hostname: searchURL.host!)
+        guard reachable?.connection != Reachability.Connection.none else {
+            let errorDictionary : NSDictionary = [NSLocalizedDescriptionKey : "No network connection found"]
+            let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: errorDictionary as? [String : Any])
+            completion(nil, error as Error)
+            return
+        }
+        
         URLSession.shared.dataTask(with: searchURL) { (data, response, error) in
             guard let data = data else { return }
             
@@ -40,6 +48,14 @@ public class ApiService: NSObject {
         var urlComponents = self.getBaseURLComponents(method: "flickr.tags.getRelated")
         urlComponents.queryItems?.append(URLQueryItem(name: "tag", value: "slalom"))
         let url = urlComponents.url!
+        
+        let reachable = Reachability.init(hostname: url.host!)
+        guard reachable?.connection != Reachability.Connection.none else {
+            let errorDictionary : NSDictionary = [NSLocalizedDescriptionKey : "No network connection found"]
+            let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: errorDictionary as? [String : Any])
+            completion([], error as Error)
+            return
+        }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }

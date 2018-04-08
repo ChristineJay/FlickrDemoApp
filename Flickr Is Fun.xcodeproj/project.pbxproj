@@ -18,7 +18,6 @@
 		CB90FA1A2078382800D69FF3 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA192078382800D69FF3 /* DataModel.swift */; };
 		CB90FA1C20783AF800D69FF3 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */; };
 		CB90FA1E2078647900D69FF3 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA1D2078647900D69FF3 /* PopupViewController.swift */; };
-		CB90FA202078723D00D69FF3 /* love-your-future.png in Resources */ = {isa = PBXBuildFile; fileRef = CB90FA1F2078723C00D69FF3 /* love-your-future.png */; };
 		CB90FA2420791BE400D69FF3 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA2320791BE400D69FF3 /* ApiService.swift */; };
 		CB90FA26207922FF00D69FF3 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90FA25207922FF00D69FF3 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +48,6 @@
 		CB90FA192078382800D69FF3 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		CB90FA1B20783AF800D69FF3 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB90FA1D2078647900D69FF3 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
-		CB90FA1F2078723C00D69FF3 /* love-your-future.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "love-your-future.png"; sourceTree = "<group>"; };
 		CB90FA2320791BE400D69FF3 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		CB90FA25207922FF00D69FF3 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				CB3BCCAE207A248600349254 /* Image */,
-				CB90FA1F2078723C00D69FF3 /* love-your-future.png */,
 				CB4CE2242075A5FD00C599A8 /* FlickrApi */,
 				CB4CE20B2074404D00C599A8 /* Assets.xcassets */,
 				CB4CE2042074404D00C599A8 /* AppDelegate.swift */,
@@ -219,7 +216,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB90FA202078723D00D69FF3 /* love-your-future.png in Resources */,
 				CB4CE20F2074404D00C599A8 /* LaunchScreen.storyboard in Resources */,
 				CB4CE20C2074404D00C599A8 /* Assets.xcassets in Resources */,
 				CB4CE20A2074404D00C599A8 /* Main.storyboard in Resources */,

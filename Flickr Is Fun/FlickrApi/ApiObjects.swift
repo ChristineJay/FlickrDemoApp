@@ -87,28 +87,54 @@ struct Tag : Codable {
     
     // {"score":"100","_content":"feb23"}
     
-    let score : Int
     let content : String
     
     private enum CodingKeys: String, CodingKey {
-        case score
         case content = "_content"
     }
 }
 
-struct TrendingTags: Codable {
-    
+struct TrendingTags : Codable {
     // period":"day","count":20,"tag":[
     
     let period : String
-    let count : Int
+    let count : String
     let tag : [Tag]
-    let stat : String
-
+    
     private enum CodingKeys: String, CodingKey {
         case period
         case count
         case tag
+    }
+}
+
+struct GetTrendingTags : Codable
+{
+    let trendingTags : TrendingTags
+    let stat : String
+    
+    private enum CodingKeys: String, CodingKey {
+        case trendingTags = "hottags"
+        case stat
+    }
+}
+
+struct RelatedTags : Codable {
+
+    let tag : [Tag]
+    
+    private enum CodingKeys: String, CodingKey {
+        case tag
+    }
+}
+
+struct SuggestedTags : Codable {
+    
+    let tags : RelatedTags
+    let stat : String
+
+    private enum CodingKeys: String, CodingKey {
+        case tags
         case stat
     }
 }

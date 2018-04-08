@@ -21,7 +21,7 @@ public class ApiService: NSObject {
         return urlComponents
     }
     
-    static func search(searchTerms : String, completion: @escaping (_ result: Photos) -> Void) {
+    static func search(searchTerms : String, completion: @escaping (_ result: Photos?, _ error: Error?) -> Void) {
         var searchURLComponents = self.getBaseURLComponents(method: "flickr.photos.search")
         searchURLComponents.queryItems?.append(URLQueryItem(name: "text", value: searchTerms))
         let searchURL = searchURLComponents.url!
@@ -30,25 +30,29 @@ public class ApiService: NSObject {
             guard let data = data else { return }
             
             let gitData = try? JSONDecoder().decode(Search.self, from: data)
-            // todo: error handling and throttling
+            // todo: throttling
             
-            DispatchQueue.main.async {
-                completion((gitData?.photos)!)
-            }
+            completion(gitData?.photos, error)
             }.resume()
     }
     
-    static func getTrendingTopics(_ completion: @escaping (_ result: [Tag]) -> Void) {
-        let searchURLComponents = self.getBaseURLComponents(method: "flickr.tags.getHotList")
-        let searchURL = searchURLComponents.url!
+    static func getSuggestedTopics(_ completion: @escaping (_ result: [Tag], _ error: Error?) -> Void ) {
+        var urlComponents = self.getBaseURLComponents(method: "flickr.tags.getRelated")
+        urlComponents.queryItems?.append(URLQueryItem(name: "tag", value: "slalom"))
+        let url = urlComponents.url!
         
-        URLSession.shared.dataTask(with: searchURL) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             
-            let gitData = try? JSONDecoder().decode(TrendingTags.self, from: data)
-            // todo: error handling
-            
-            completion((gitData?.tag)!)
+            let gitData = try? JSONDecoder().decode(SuggestedTags.self, from: data)
+ 
+            let tags : [Tag]
+            if let gitData = gitData {
+                tags = gitData.tags.tag
+            } else {
+                tags = []
+            }
+            completion(tags, error)
             }.resume()
     }
     

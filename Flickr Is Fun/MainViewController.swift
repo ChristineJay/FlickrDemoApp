@@ -30,12 +30,22 @@ class MainViewController: UIViewController {
         self.navigationItem.title = "flickr app"
         
         if !model.hasPhotoData() && !model.hasTagData() {
-            ApiService.getTrendingTopics({ (result: [Tag]) in
-                self.model.tags = []
-                for tag in result {
-                    self.model.tags.append(tag.content)
+            ApiService.getSuggestedTopics({ (result: [Tag], error: Error?) in
+                DispatchQueue.main.async {
+                    self.model.tags = []
+                    
+                    if error != nil {
+                        let alert : UIAlertController = UIAlertController.init(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    }
+                    
+                    for tag in result {
+                        self.model.tags.append(tag.content)
+                    }
+                    self.reloadView()
                 }
-                self.reloadView()
             })
         }
         
@@ -77,10 +87,28 @@ class MainViewController: UIViewController {
         
         self.searchField.isEnabled = false
         ApiService.search(searchTerms: searchText,
-                          completion: { (result: Photos) in
-                            self.model.images = result.photo
-                            self.reloadView()
-                            self.searchField.isEnabled = true
+                          completion: { (result: Photos?, error: Error?) in
+                            DispatchQueue.main.async {
+                                self.searchField.isEnabled = true
+                                
+                                if error != nil {
+                                    let alert : UIAlertController = UIAlertController.init(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                    return
+                            }
+                            
+                            if let result = result {
+                                self.model.images = result.photo
+                                self.reloadView()
+                            } else {
+                                self.model.images = []
+                                
+                                let alert : UIAlertController = UIAlertController.init(title: "Error", message: "Unable to complete request", preferredStyle: .alert)
+                                self.present(alert, animated: true, completion: nil)
+                                return
+                            }
+                            }
         })
     }
     
@@ -163,7 +191,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if section == photoSection {
-            return model.numberOfPhotosToDisplay()
+            return model.images.count
         } else {
             if model.hasPhotoData() {
                 return 0
@@ -193,18 +221,13 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         if (indexPath.section == tagSection) {
-            return CGSize.init(width: collectionView.frame.size.width, height: 50)
+            // this implementation is a little weird, but I wanted the suggested tags to be variable size
+            let tag : String = model.tags[indexPath.row]
+            let width = min(tag.count * 15 + (15 * Int(1 + arc4random_uniform(1))), Int(collectionView.frame.size.width - 32))
+            
+            return CGSize.init(width: width, height: 45)
         }
         
         return CGSize.init(width: 163, height: 150)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == tagSection {
-            return CGSize.init(width: collectionView.frame.size.width, height: 50)
-        }
-        return CGSize.zero
-    }
-    
-
 }

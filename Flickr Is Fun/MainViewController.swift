@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "flickr app"
         
-        self.logoImage.isHidden = self.traitCollection.horizontalSizeClass == .compact
+        self.logoImage.isHidden = self.traitCollection.horizontalSizeClass == .compact || self.traitCollection.verticalSizeClass == .compact
         
         if !model.hasPhotoData() && !model.hasTagData() {
             ApiService.getSuggestedTopics({ (result: [Tag], error: Error?) in
@@ -222,8 +222,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrCell", for: indexPath) as! ImageCollectionViewCell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        if (indexPath.section == tagSection) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == tagSection {
             // this implementation is a little weird, but I wanted the suggested tags to be variable size
             let tag : String = model.tags[indexPath.row]
             let width = min(tag.count * 15 + (15 * Int(1 + arc4random_uniform(1))), Int(collectionView.frame.size.width - 32))

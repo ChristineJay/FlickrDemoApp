@@ -41,15 +41,9 @@ class PopupViewController: UIViewController {
     func reloadView() {
         setupMetadata()
         
-        let downloadTask = URLSession.shared.dataTask(with: photoData!.GetFullsizedImageUrl()) {(data, response, error) in
-            if error == nil {
-                OperationQueue.main.addOperation({ () -> Void in
-                    self.imageView.image = UIImage(data: data!)
-                    
-                })
-            }
-        }
-        downloadTask.resume()
+        ApiService.downloadOrFetchImage(photoData!.GetFullsizedImageUrl(), completion: ({(data) -> Void in
+            self.imageView.image = UIImage(data: data)
+        }))
     }
     
     @IBAction func didTapScreen() {

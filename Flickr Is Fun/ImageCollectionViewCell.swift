@@ -22,8 +22,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     public func setup(_ photo : Photo) {
-        // todo: caching, error handling
-        
         if self.photoData != nil {
             if self.photoData?.id == photo.id {
                 return
@@ -33,14 +31,9 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.photoData = photo
         
         self.activityIndicator.startAnimating()
-        let downloadTask = URLSession.shared.dataTask(with: photo.GetThumbnailImageUrl()) {(data, response, error) in
-            if error == nil {
-                OperationQueue.main.addOperation({ () -> Void in
-                    self.activityIndicator.stopAnimating()
-                    self.imageView.image = UIImage(data: data!)
-                })
-            }
-        }
-        downloadTask.resume()
+        ApiService.downloadOrFetchImage(photo.GetThumbnailImageUrl(), completion: ({(data) -> Void in
+            self.activityIndicator.stopAnimating()
+            self.imageView.image = UIImage(data: data)
+            }))
     }
 }

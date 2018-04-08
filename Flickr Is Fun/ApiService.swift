@@ -38,4 +38,24 @@ public class ApiService: NSObject {
             }
             }.resume()
     }
+    
+    private static var cache : NSCache<AnyObject,AnyObject> = NSCache()
+    static func downloadOrFetchImage(_ url : URL, completion: @escaping (_ data : Data) -> Void) {
+        // todo: error handling
+        
+        if cache.object(forKey: url as AnyObject) != nil {
+            completion(cache.object(forKey: url as AnyObject) as! Data)
+            return
+        }
+        
+        let downloadTask = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            if error == nil {
+                OperationQueue.main.addOperation({ () -> Void in
+                    self.cache.setObject(data as AnyObject, forKey: url as AnyObject)
+                    completion(data!)
+                })
+            }
+        }
+        downloadTask.resume()
+    }
 }

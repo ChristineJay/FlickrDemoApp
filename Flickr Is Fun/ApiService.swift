@@ -35,6 +35,10 @@ public class ApiService: NSObject {
         }
         
         URLSession.shared.dataTask(with: searchURL) { (data, response, error) in
+            if let error = error {
+                completion(nil, error as Error)
+            }
+            
             guard let data = data else { return }
             
             let gitData = try? JSONDecoder().decode(Search.self, from: data)
@@ -58,6 +62,10 @@ public class ApiService: NSObject {
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion([], error as Error)
+            }
+            
             guard let data = data else { return }
             
             let gitData = try? JSONDecoder().decode(SuggestedTags.self, from: data)
@@ -80,8 +88,6 @@ public class ApiService: NSObject {
             completion(cache.object(forKey: url as AnyObject) as! Data)
             return
         }
-        
-        //CFHostGetReachability(<#T##theHost: CFHost##CFHost#>, <#T##hasBeenResolved: UnsafeMutablePointer<DarwinBoolean>?##UnsafeMutablePointer<DarwinBoolean>?#>)
         
         let downloadTask = URLSession.shared.dataTask(with: url) {(data, response, error) in
             if error == nil {
